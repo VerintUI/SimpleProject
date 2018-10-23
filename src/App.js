@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MessageBoard from "./components/MessageBoard";
+
+const DEMO_DATA =[{}, {}, {}, {}, {}, {}];
+
+const Styles = {
+    frame: {
+        width: '100vw',
+        height: '100vh',
+        padding: '25px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+    }
+};
 
 class App extends Component {
   render() {
+    Styles.frame.backgroundColor = this.props.theme.background;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div style={Styles.frame}>
+            <MessageBoard
+                data={DEMO_DATA}
+                theme={this.props.theme}
+            />
+        </div>
     );
   }
 }
